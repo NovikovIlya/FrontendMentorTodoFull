@@ -1,21 +1,26 @@
-import styles from './Todo.module.css'
+import styles from './Todo.module.css';
 
-const Todo = ({ text, setText, fetchTodo }:any) => {
+type PropsTodoCreate = {
+  text: string;
+  setText: (text: string) => void;
+  fetchTodo: (text: string) => void;
+};
 
-
-  
-
+const Todo = ({ text, setText, fetchTodo }: PropsTodoCreate) => {
   return (
     <div>
       <div className={styles.container}>
-        <input type="radio" />
-        <input
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          type="text"
-          placeholder="Create a new todo"
-        />
-        <button onClick={() => fetchTodo(text)}>+</button>
+        <div className={styles.parent}>
+          <input disabled type="checkbox" className={styles.rad} />
+          <input
+            className={styles.mainInp}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            type="text"
+            placeholder="Create a new todo"
+          />
+        </div>
+        <button className={styles.btn} onClick={() => fetchTodo(text)}>+</button>
       </div>
     </div>
   );

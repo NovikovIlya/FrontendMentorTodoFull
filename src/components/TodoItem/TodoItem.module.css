@@ -1,3 +1,40 @@
 .hidden{
     display: none;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .parent{
+      display: flex;
+      align-items: center;
+      width: 100%;
+  }
+  .mainInp {
+  width: 100%;
+    margin-left: 10px;
+    background-color: #25273C;
+    border: none;
+    color: white;
+    outline: none;
+  }
+  .rad{
+      margin-left: 10px;
+      border-radius: 50%;
+  }
+  .btn{
+      cursor: pointer;
+      border: none;
+      background-color: #25273C;
+      color: white;
+      outline: none;
+      padding: 10px;
+     
+  }
+  .btn:hover{
+      background-color: white;
+      color: black;
+  }
+  

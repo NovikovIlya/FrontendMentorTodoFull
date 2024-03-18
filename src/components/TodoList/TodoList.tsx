@@ -7,7 +7,7 @@ import { countItem } from '../../utils/CountItem';
 import { TodoItem } from '../../types/types';
 
 const TodoList = () => {
-  const { todos = [], isError, isLoad } = useAppSelector((state) => state.todoSlice);
+  const { todos = [], isError, isLoad, sort } = useAppSelector((state) => state.todoSlice);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const TodoList = () => {
   };
 
   const deleteHandler = async () => {
-    const filterTodo = todos.filter((item) => item.completed === true);
+    const filterTodo = todos.filter((item) => item.completed === false);
     await dispatch(deleteData(filterTodo));
     await dispatch(getData());
   };
@@ -38,9 +38,15 @@ const TodoList = () => {
           <div>
             <div>{countItem(todos)} item left</div>
             <div>
-              <div onClick={() => sortHandler('all')}>All</div>
-              <div onClick={() => sortHandler('active')}>Active</div>
-              <div onClick={() => sortHandler('completed')}>Completed</div>
+              <div className={sort === 'all' ? styles.active : ''} onClick={() => sortHandler('all')}>
+                All
+              </div>
+              <div className={sort === 'active' ? styles.active : ''} onClick={() => sortHandler('active')}>
+                Active
+              </div>
+              <div className={sort === 'completed' ? styles.active : ''} onClick={() => sortHandler('completed')}>
+                Completed
+              </div>
             </div>
             <div onClick={() => deleteHandler()}>Clear Completed</div>
           </div>

@@ -1,4 +1,17 @@
 .container{
     margin-top: 20px;
-    width: 70%;
+    width: 50%;
+    
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hh1{
+    color:white;
+    letter-spacing: 8px;
+}
+.icon{
+    width: 30px;
 }
