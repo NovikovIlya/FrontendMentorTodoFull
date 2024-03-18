@@ -15,3 +15,9 @@
 .icon{
     width: 30px;
 }
+@media screen and (max-width: 600px) {
+    .container{
+        max-width: 80%;
+    }
+}
+

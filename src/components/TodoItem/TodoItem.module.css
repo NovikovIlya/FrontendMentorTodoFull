@@ -1,16 +1,18 @@
-.hidden{
-    display: none;
-}
+
 
 .container {
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #25273C;
   }
   .parent{
+    height: 40px;
       display: flex;
       align-items: center;
       width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.178);
   }
   .mainInp {
   width: 100%;
@@ -18,7 +20,7 @@
     background-color: #25273C;
     border: none;
     color: white;
-    outline: none;
+  
   }
   .rad{
       margin-left: 10px;
@@ -29,7 +31,7 @@
       border: none;
       background-color: #25273C;
       color: white;
-      outline: none;
+  
       padding: 10px;
      
   }
@@ -38,3 +40,8 @@
       color: black;
   }
   
+
+
+  .hidden{
+    display: none;
+}

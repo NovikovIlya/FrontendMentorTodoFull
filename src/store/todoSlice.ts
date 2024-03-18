@@ -7,12 +7,23 @@ export const getData = createAsyncThunk('get/getData', async () => {
   return data.reverse();
 });
 
-export const postData = createAsyncThunk('post/postData', async (text: string) => {
-  const { data } = await axios.post('https://412097daab842550.mokky.dev/all', {
-    title: text,
-    completed: false,
-  });
-  return data;
+export const postData = createAsyncThunk('post/postData', async (text: string,{dispatch}) => {
+  const tempId = Date.now(); // Генерация временного ID
+  const tempTodo = { id: tempId, title: text, completed: false };
+
+  // Оптимистичное добавление
+  dispatch(sliceData.actions.addTempTodo(tempTodo));
+  
+  try {
+    const { data } = await axios.post('https://412097daab842550.mokky.dev/all', {
+      title: text,
+      completed: false,
+    });
+    return data;
+  } catch (error) {
+    dispatch(sliceData.actions.removeTempTodo(tempId));
+    console.log(error);
+  }
 });
 
 export const changeData = createAsyncThunk(
@@ -35,12 +46,20 @@ const initialState: InitialType = {
   todos: [],
   isLoad: true,
   isError: false,
+  tempTodos : [],
 };
 
 export const sliceData = createSlice({
   name: 'sliceData',
   initialState,
   reducers: {
+    addTempTodo: (state, action) => {
+      // @ts-expect-error: Необходимо для временного решения проблемы типизации"
+      state.tempTodos && state.tempTodos.unshift(action.payload) ;
+    },
+    removeTempTodo: (state, action) => {
+      state.tempTodos && (state.tempTodos = state.tempTodos.filter((todo) => todo.id !== action.payload));
+    },
     setSort: (state, action) => {
       state.sort = action.payload;
     },
@@ -64,7 +83,7 @@ export const sliceData = createSlice({
     });
     // Изменение
     builder.addCase(changeData.pending, (state) => {
-      state.isLoad = true;
+      state.isLoad = false;
       state.isError = false;
     });
     builder.addCase(changeData.fulfilled, (state) => {
@@ -88,8 +107,15 @@ export const sliceData = createSlice({
       state.isLoad = false;
       state.isError = true;
     });
+    builder.addCase(postData.fulfilled, (state, action) => {
+      // @ts-expect-error: Необходимо для временного решения проблемы типизации"
+      // Удаляем временную задачу и добавляем полученную от сервера
+      state.tempTodos && (state.tempTodos = state.tempTodos.filter((todo: TodoItem) => todo.id !== action.meta.arg.tempId));
+      // @ts-expect-error: Необходимо для временного решения проблемы типизации"
+      state.todos && state.todos.unshift(action.payload );
+    });
   },
 });
 
-export const { setSort } = sliceData.actions;
+export const { setSort,addTempTodo, removeTempTodo } = sliceData.actions;
 export default sliceData.reducer;

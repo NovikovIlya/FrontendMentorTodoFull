@@ -9,6 +9,7 @@
     width: 100%;
 }
 .mainInp {
+  height: 40px;
 width: 100%;
   margin-left: 10px;
   background-color: #25273C;
@@ -27,6 +28,7 @@ width: 100%;
     color: white;
     outline: none;
     padding: 10px;
+    height: 42px;
    
 }
 .btn:hover{

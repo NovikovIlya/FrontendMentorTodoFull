@@ -26,29 +26,25 @@ const TodoList = () => {
 
   return (
     <>
-      {isLoad ? (
-        <div>loading...</div>
-      ) : isError ? (
-        <div>error...</div>
-      ) : todos.length > 0 ? (
-        <div className={styles.container}>
+      {isLoad ? ( <div>loading...</div>) : isError ? ( <div>error...</div>) : todos.length > 0 ? 
+        (<div className={styles.container}>
           {todos.map((item: TodoItem) => (
             <TodoItems key={item.id} id={item.id} title={item.title} completed={item.completed} />
           ))}
-          <div>
-            <div>{countItem(todos)} item left</div>
-            <div>
-              <div className={sort === 'all' ? styles.active : ''} onClick={() => sortHandler('all')}>
+          <div className={styles.footer}>
+            <div>{countItem(todos)} items left</div>
+            <div className={styles.sortItem}>
+              <div className={`${sort === 'all' ? styles.active : ''} ${styles.item}`} onClick={() => sortHandler('all')}>
                 All
               </div>
-              <div className={sort === 'active' ? styles.active : ''} onClick={() => sortHandler('active')}>
+              <div className={`${sort === 'active' ? styles.active : ''} ${styles.item}`} onClick={() => sortHandler('active')}>
                 Active
               </div>
-              <div className={sort === 'completed' ? styles.active : ''} onClick={() => sortHandler('completed')}>
+              <div className={`${sort === 'completed' ? styles.active : ''} ${styles.item}`} onClick={() => sortHandler('completed')}>
                 Completed
               </div>
             </div>
-            <div onClick={() => deleteHandler()}>Clear Completed</div>
+            <div className={styles.delete} onClick={() => deleteHandler()}>Clear Completed</div>
           </div>
         </div>
       ) : (

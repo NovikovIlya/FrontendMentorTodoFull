@@ -1,7 +1,41 @@
 .container{
-    
+    margin-top: 30px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 .active{
-    color: red;
+    color: #386adf;
+}
+
+.footer{
+    height: 40px;
+    background-color: #25273C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: rgba(255, 255, 255, 0.288);
+}
+
+.sortItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.item{
+    cursor: pointer;
+}
+
+.delete{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .footer{
+        flex-direction: column;
+        padding: 10px;
+        height: auto;
+        gap: 10px;
+    }
 }
 
