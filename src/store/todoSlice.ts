@@ -42,6 +42,7 @@ export const deleteData = createAsyncThunk('delete/deleteData', async (array: To
 });
 
 const initialState: InitialType = {
+  theme: 'light',
   sort: 'all',
   todos: [],
   isLoad: true,
@@ -62,6 +63,9 @@ export const sliceData = createSlice({
     },
     setSort: (state, action) => {
       state.sort = action.payload;
+    },
+    setChangeTheme: (state, action) => {
+      state.theme = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -117,5 +121,5 @@ export const sliceData = createSlice({
   },
 });
 
-export const { setSort,addTempTodo, removeTempTodo } = sliceData.actions;
+export const { setSort,addTempTodo, removeTempTodo, setChangeTheme } = sliceData.actions;
 export default sliceData.reducer;

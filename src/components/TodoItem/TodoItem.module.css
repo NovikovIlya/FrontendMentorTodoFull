@@ -1,47 +1,41 @@
-
-
 .container {
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #25273C;
-  }
-  .parent{
-    height: 40px;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.178);
-  }
-  .mainInp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #25273c;
+}
+.parent {
+  height: 40px;
+  display: flex;
+  align-items: center;
   width: 100%;
-    margin-left: 10px;
-    background-color: #25273C;
-    border: none;
-    color: white;
-  
-  }
-  .rad{
-      margin-left: 10px;
-      border-radius: 50%;
-  }
-  .btn{
-      cursor: pointer;
-      border: none;
-      background-color: #25273C;
-      color: white;
-  
-      padding: 10px;
-     
-  }
-  .btn:hover{
-      background-color: white;
-      color: black;
-  }
-  
+  border-bottom: 1px solid rgba(255, 255, 255, 0.178);
+}
+.mainInp {
+  width: 100%;
+  margin-left: 10px;
+  background-color: #25273c;
+  border: none;
+  color: white;
+}
+.rad {
+  margin-left: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.btn {
+  cursor: pointer;
+  border: none;
+  background-color: #25273c;
+  color: white;
 
+  padding: 10px;
+}
+.btn:hover {
+  background-color: white;
+  color: black;
+}
 
-  .hidden{
-    display: none;
+.hidden {
+  display: none;
 }

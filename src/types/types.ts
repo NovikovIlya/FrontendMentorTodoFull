@@ -4,6 +4,7 @@ export type InitialType = {
     isError: boolean;
     sort:string;
     tempTodos? : TodoItem[] | [];
+    theme: string;
   }
   export type TodoItem = {
     id: number;
