@@ -26,7 +26,7 @@ const TodoList = () => {
 
   return (
     <>
-      {isLoad ? ( <div>loading...</div>) : isError ? ( <div>error...</div>) : todos.length > 0 ? 
+      {isLoad ? ( <div className={styles.ldsring}><div></div><div></div><div></div><div></div></div>) : isError ? ( <div>error...</div>) : todos.length > 0 ? 
         (<div className={styles.container}>
           {todos.map((item: TodoItem) => (
             <TodoItems key={item.id} id={item.id} title={item.title} completed={item.completed} />
